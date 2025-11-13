@@ -1,0 +1,49 @@
+<!-- templates/base.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}My Blog{% endblock title %}</title>
+
+  {% load static %}
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  
+  {% block extra_head %}{% endblock extra_head %}
+</head>
+<body id="body">
+  <!-- Header -->
+  <header id="site-header" class="header">
+    <div class="container header-container">
+      <h1 class="site-title">
+        <a href="{% url 'home' %}" class="site-title-link">My Blog</a>
+      </h1>
+      <nav id="main-nav" class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="{% url 'post_create' %}" class="nav-link">New Post</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content area -->
+  <main id="main-content" class="main">
+    <div class="container content-container">
+      {% block content %}
+      <!-- Child templates put content here -->
+      {% endblock content %}
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer" class="footer">
+    <div class="container footer-container">
+      <p class="footer-text">&copy; <time datetime="2025">2025</time> My Blog</p>
+    </div>
+  </footer>
+
+  {% block extra_scripts %}{% endblock extra_scripts %}
+</body>
+</html>

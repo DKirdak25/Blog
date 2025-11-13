@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - My Blog{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<section id="home-page" class="home-page">
+  <h2 class="section-title">Recent Posts</h2>
+
+  <div class="posts-list">
+    {% for post in posts %}
+      <article class="post-card">
+        <h3 class="post-title">{{ post.title }}</h3>
+        <p class="post-author">By {{ post.author }}</p>
+        <p class="post-link">
+          <a href="{{ post.get_absolute_url }}" class="read-more">Read more →</a>
+        </p>
+      </article>
+    {% empty %}
+      <p class="no-posts">No posts yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

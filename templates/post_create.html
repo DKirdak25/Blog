@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - My Blog{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/post_create.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<section id="new-post-page" class="new-post-page">
+  <h2 class="section-title">Create a New Post</h2>
+
+  <form action="" method="post" class="post-form">
+    {% csrf_token %}
+    <div class="form-fields">
+      {{ form }}
+    </div>
+    <input type="submit" value="Save" class="btn btn-submit">
+  </form>
+</section>
+{% endblock content %}

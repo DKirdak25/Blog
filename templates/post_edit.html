@@ -1,0 +1,23 @@
+<!-- templates/post_edit.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Edit Post - My Blog{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/post_edit.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<section id="edit-post-page" class="edit-post-page">
+  <h1 class="section-title">Edit Post</h1>
+
+  <form action="" method="post" class="edit-form">
+    {% csrf_token %}
+    <div class="form-fields">
+      {{ form }}
+    </div>
+    <input type="submit" value="Update" class="btn btn-update">
+  </form>
+</section>
+{% endblock content %}

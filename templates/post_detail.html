@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ post.title }} - My Blog{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<section id="post-detail-page" class="post-detail-page">
+  <article id="post-detail" class="post-detail">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-author">
+      <h2>Author: {{ post.author}}</h2>
+    </p>
+    <div class="post-body">
+      <p>{{ post.body }}</p>
+    </div>
+  </article>
+
+  <div class="post-actions">
+    <p><a href="{% url 'home' %}" class="btn btn-back">← Back to Home</a></p>
+    <p><a href="{% url 'post_edit' post.pk %}" class="btn btn-edit">✎ Edit Blog Post</a></p>
+    <p><a href="{% url 'post_delete' post.pk %}" class="btn btn-delete">🗑 Delete Blog Post</a></p>
+  </div>
+</section>
+{% endblock content %}

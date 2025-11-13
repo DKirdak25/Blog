@@ -1,0 +1,26 @@
+<!-- templates/post_delete.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete Post - My Blog{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/post_delete.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<section id="delete-post-page" class="delete-post-page">
+  <h1 class="section-title">Delete Post</h1>
+
+  <form action="" method="post" class="delete-form">
+    {% csrf_token %}
+    <p class="delete-message">
+      Are you sure you want to delete <strong class="post-title">"{{ post.title }}"</strong>?
+    </p>
+    <div class="delete-actions">
+      <input type="submit" value="Confirm" class="btn btn-confirm">
+      <a href="{% url 'home' %}" class="btn btn-cancel">Cancel</a>
+    </div>
+  </form>
+</section>
+{% endblock content %}
